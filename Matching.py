@@ -1,4 +1,5 @@
 import numpy as np
+from tqdm import tqdm
 import torch
 from Packages.RegistrationFunc import *
 from Packages.SplitEbinMetric import *
@@ -203,7 +204,7 @@ if __name__ == "__main__":
     epsilon_all = []
 
     # L2
-    # for i in range(Num_ite):
+    # for i in tqdm(range(Num_ite)):
     #     phi_actsg0 = phi_pullback(phi_inv, g0)
     #     phi_actsf0 = phi_pullback(phi_inv, f0)
     #
@@ -273,7 +274,7 @@ if __name__ == "__main__":
     f1 = torch.eye(2, dtype=torch.double).repeat(height, width, 1, 1).permute(2, 3, 0, 1)
     E = torch.tensor([np.inf], dtype=torch.double)
 
-    for i in range(Num_ite):
+    for i in tqdm(range(Num_ite)):
         phi_actsg0 = phi_pullback(phi_inv, g0)
         phi_actsf0 = phi_pullback(phi_inv, f0)
 
